@@ -31,7 +31,7 @@ public class JoiaController{
         this.service = service;
     }
 
-    @RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+    @RequestMapping("/cadastro")
     public String getFormCadastro(Model model){
         Joia joia = new Joia();
         model.addAttribute("joia", joia);

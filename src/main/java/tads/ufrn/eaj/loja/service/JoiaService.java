@@ -23,7 +23,7 @@ public class JoiaService {
 
     }
     public Joia findById(Long id){
-        return repository.getById(id);
+        return this.repository.getById(id);
     }
 
     public List<Joia> listAll(){

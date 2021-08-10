@@ -16,7 +16,7 @@
 <main class="container">
     <form method="post"  th:object="${formJoia}" th:action="@{/salvar}" enctype="multipart/form-data">
         <h2>Editar uma joia</h2>
-        <input type="text" disabled placeholder="Codigo" name="id" th:field="*{id}">
+        <input type="text"  readonly placeholder="Codigo" name="id" th:field="*{id}">
         <input type="text" placeholder="Descrição" name="description" th:field="*{description}">
         <input type="text"  minlength="1"  placeholder="Preço" name="price" th:field="*{price}">
         <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
