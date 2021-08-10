@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css"  type="text/css">
+    <link rel="stylesheet" href="/css/global.css"  type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+
+    <title>Document</title>
+</head>
+<body>
+<header th:replace="fragments/header-administration :: header"></header>
+<p th:text="${#request.getParameter('mensagem')}"></p>
+
+<main class="container">
+    <img th:src="@{images/mulher.jpg}"  width="500px" alt=""/>
+
+
+
+    <h3>Lista de Produtos Cadastrados</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Codigo do produto</th>
+            <th>Produto</th>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Editar</th>
+            <th>Remover</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="joia : ${listJoia2}">
+            <td class="code-product" th:text="${joia.id}"></td>
+            <td><img width="100px" th:src="@{'/images/' + ${joia.getImageUri()}}" alt="imagem"/></td>
+            <td th:text="${joia.description}"></td>
+            <td th:text="${joia.category}"></td>
+            <td th:text="${joia.price}"></td>
+            <td class="edit-product"><a th:href="@{'/editar/' + ${joia.id}}"><span class="iconify" data-icon="akar-icons:edit" data-inline="false">  </span> </a></td>
+            <td class="remove-product"><a th:href="@{'/deletar/' + ${joia.id}}"> <span class="iconify" data-icon="carbon:delete" data-inline="false"></span></a></td>
+        </tr>
+        </tbody>
+    </table>
+
+</main>
+
+</body>
+</html>

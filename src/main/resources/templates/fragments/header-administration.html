@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/header.css}" rel="stylesheet" type="text/css">
+
+    <meta charset="UTF-8" />
+
+</head>
+<body>
+<header th:fragment="header">
+    <nav>
+        <p>Dalas Jewerly Administration </p>
+
+        <button><a th:href="@{/cadastro}">Novo Produto</a></button>
+    </nav>
+
+</header>
+
+</body>
+</html>

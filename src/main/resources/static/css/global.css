@@ -1,0 +1,83 @@
+:root{
+    --background: #F5F7FB;
+    --pink: #E4B4AA;
+    --pink-light:rgba(228, 180, 170, 0.25);
+
+    --text-body: #495057;
+    --shape: #FFFFFF;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea,button{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, h6, strong{
+    font-weight: 600;
+}
+
+button{
+    cursor: pointer;
+
+}
+[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+.modal-overlay{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.25);
+    /* visibility: hidden;
+    opacity: 0; */
+}
+.modal-overlay.active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content{
+
+    width: 100%;
+    max-width: 876px;
+    background:  var(--shape);
+    padding: 3rem;
+    position: relative;
+    border-radius: 0.25rem;
+
+}
+
+.modal-content .button-close{
+    cursor: pointer;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    border: 0;
+    background: transparent;
+
+    transition: filter 0.2s;
+}
+button:hover{
+    filter: brightness(0.8);
+}

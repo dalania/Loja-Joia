@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css"  type="text/css">
+    <link rel="stylesheet" href="/css/global.css"  type="text/css">
+
+
+    <title>Document</title>
+</head>
+<body>
+<header th:replace="fragments/header-administration :: header"></header>
+
+<main class="container">
+    <form method="post" th:action="@{/salvar}" th:object="${joia}" enctype="multipart/form-data">
+        <h2>Cadastro de Produtos</h2>
+        <input type="text" placeholder="Descrição" name="description" th:field="*{description}">
+        <input type="text"  minlength="1"  placeholder="Preço" name="price" th:field="*{price}">
+        <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+        <select th:field="*{category}">
+            <option th:value="'default'">Selecione a categoria da joia</option>
+            <option th:value="'Anel'" th:text="Anel"></option>
+            <option th:value="'Brinco'" th:text="Brinco"></option>
+            <option th:value="'Colar'" th:text="Colar"></option>
+            <option th:value="'Pulseira'" th:text="Pulseira"></option>
+        </select>
+        <select th:field="*{type}">
+            <option th:value="'default'">Tipo da Joia</option>
+            <option th:value="'Bijuteria'" th:text="Bijuteria"></option>
+            <option th:value="'Ouro'" th:text="Ouro"></option>
+            <option th:value="'Prata'" th:text="Prata"></option>
+            <option th:value="'Zirconio'" th:text="Zirconio"></option>
+            <option th:value="'Folheada'" th:text="Folheada"></option>
+        </select>
+        <div>
+            <label>Insira uma imagem do produto</label>
+            <input type="file" name="file">
+
+        </div>
+
+        <div class="button-save-modal">
+            <button type="submit">Salvar</button>
+
+        </div>
+
+    </form>
+
+
+</main>
+
+</body>
+</html>
