@@ -91,7 +91,7 @@ public class JoiaController{
         return "redirect:/admin?message=Deletado";
     }
 
-    @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String getJoias(Model model, HttpServletResponse response){
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss:SSS");

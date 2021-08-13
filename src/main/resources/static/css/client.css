@@ -1,0 +1,182 @@
+.header-principal nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+
+}
+
+.header-principal nav p{
+    color: var(--pink);
+    font-size:1.4rem;
+    font-weight:600;
+}
+
+.header-principal ul{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+
+}
+.header-principal ul li{
+    list-style-type: none;
+    margin:0px 1rem;
+    color: var(--pink);
+
+}
+
+.container{
+    color: var(--text-body);
+    margin:40px;
+
+}
+
+.container h3{
+    font-size: 1.2rem;
+    color: var(--pink);
+
+}
+
+.container table{
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+    border-spacing: 0 2rem;
+
+}
+
+table th{
+    background-color: var(--pink-light);
+    padding: 12px;
+}
+
+table td{
+    padding: 12px;
+}
+
+table td img{
+    width: 100px;
+}
+
+.fa-shopping-bag{
+    font-size: 1.4rem;
+}
+.material-icons{
+    font-size: 1.8rem;
+}
+
+.header-principal ul li button{
+    border: none;
+    background: none;
+    color: var(--pink);
+}
+
+.carrousel{
+    margin: 40px;
+
+}
+
+.carouselExampleCaptions{
+    height:40px;
+}
+
+.header-category{
+
+    background: var(--pink);
+    border-radius: 4px;
+    color: #fff;
+
+}
+
+.header-category ul li{
+
+    color: #fff;
+    list-style-type: none;
+    font-size: 1rem;
+    line-height: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.header-category ul{
+
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1px;
+}
+
+.fa-rings-wedding{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 2rem;
+
+}
+main{
+    margin: 40px;
+}
+main h2{
+    color: var(--pink);
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.products{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.joia{
+    width: 280px;
+    background: #FFFFFF;
+    height: 330px;
+
+}
+
+.image img{
+    width: 280px;
+    height: 150px;
+}
+
+.description{
+    color: #495057;
+    margin: 10px;
+}
+
+.description p+p{
+    font-weight: 700;
+}
+
+.joia button{
+    border: none;
+    background: var(--pink);
+    height: 40px;
+    width: 200px;
+    margin: 20px auto;
+    color: #FFFFFF;
+
+
+
+}
+.button-add{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+.checkout-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.checkout-button button{
+    border: none;
+    background: var(--pink);
+    color: var(--shape);
+    font-size:1rem;
+    padding: 0 2rem;
+    height: 2rem;
+    transition: filter 0.2s;
+    border-radius: 0.25rem;
+
+}

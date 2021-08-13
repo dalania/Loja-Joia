@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/client.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/global.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <meta charset="UTF-8" />
+
+</head>
+<body>
+<header class="header-principal" th:fragment="header-client">
+    <nav>
+        <p>Dalas Jewerly</p>
+        <ul>
+            <li>
+                <button>
+            <span class="material-icons">
+              favorite_border
+              </span>
+                </button>
+            </li>
+            <li>
+                <button>
+            <span class="material-icons">
+            search
+            </span></button>
+            </li>
+            <li>
+                <span th:if="${!session.isEmpty()}">
+                     <span th:text="${session.carrinho.size()}"></span>
+
+                </span>
+                <a th:href="@{'/verCarrinho'}">
+
+                <button><i class="far fa-shopping-bag"></i></button>
+
+                </a>
+
+
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+</body>
+</html>
