@@ -2,12 +2,12 @@ body header nav{
     display: flex;
     justify-content: space-between;
     margin: 40px;
-
 }
-body header nav p{
+body header nav p a{
     color: var(--pink);
     font-size:1.3rem;
     font-weight:600;
+    text-decoration: none;
 }
 
 body header nav button{
@@ -19,9 +19,6 @@ body header nav button{
     height: 2rem;
     transition: filter 0.2s;
     border-radius: 0.25rem;
-
-
-
 }
 
 nav button a{

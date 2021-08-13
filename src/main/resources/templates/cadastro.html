@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css"  type="text/css">
     <link rel="stylesheet" href="/css/global.css"  type="text/css">
+    <link th:href="@{/css/header.css}" rel="stylesheet" type="text/css">
 
 
     <title>Document</title>
@@ -15,9 +16,11 @@
 
 <main class="container">
     <form method="post" th:action="@{/salvar}" th:object="${joia}" enctype="multipart/form-data">
+        <input hidden name="previousPage" value="cadastro" class="previousPage">
         <h2>Cadastro de Produtos</h2>
         <input type="text" placeholder="Descrição" name="description" th:field="*{description}">
-        <input type="text"  minlength="1"  placeholder="Preço" name="price" th:field="*{price}">
+        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+        <input type="number"    placeholder="Preço" name="price" th:field="*{price}">
         <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
         <select th:field="*{category}">
             <option th:value="'default'">Selecione a categoria da joia</option>
@@ -26,6 +29,7 @@
             <option th:value="'Colar'" th:text="Colar"></option>
             <option th:value="'Pulseira'" th:text="Pulseira"></option>
         </select>
+        <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></p>
         <select th:field="*{type}">
             <option th:value="'default'">Tipo da Joia</option>
             <option th:value="'Bijuteria'" th:text="Bijuteria"></option>
@@ -34,13 +38,14 @@
             <option th:value="'Zirconio'" th:text="Zirconio"></option>
             <option th:value="'Folheada'" th:text="Folheada"></option>
         </select>
+        <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></p>
         <div>
             <label>Insira uma imagem do produto</label>
             <input type="file" name="file">
 
         </div>
 
-        <div class="button-save-modal">
+        <div class="button-save">
             <button type="submit">Salvar</button>
 
         </div>

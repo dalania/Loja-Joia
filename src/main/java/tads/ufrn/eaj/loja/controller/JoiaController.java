@@ -1,5 +1,6 @@
 package tads.ufrn.eaj.loja.controller;
 
+import javax.servlet.http.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,14 @@ import tads.ufrn.eaj.loja.model.Joia;
 import tads.ufrn.eaj.loja.service.FileStorageService;
 import tads.ufrn.eaj.loja.service.JoiaService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -40,17 +48,22 @@ public class JoiaController{
     }
 
     @RequestMapping(value = "/salvar", method = RequestMethod.POST)
-    public String salvar(@ModelAttribute @Valid Joia joia, Errors errors, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes){
-
+    public String salvar(@ModelAttribute @Valid Joia joia, Errors errors, @RequestParam("file") MultipartFile file , RedirectAttributes redirectAttributes, @RequestParam String previousPage ){
         if(errors.hasErrors()) {
             return "cadastro";
         }else{
-            joia.setImageUri(file.getOriginalFilename());
+            if(file.isEmpty()){
+                String image = this.service.findById(joia.getId()).getImageUri();
+                joia.setImageUri(image);
+            }else{
+                Integer hascode = new Integer(hashCode());
+                joia.setImageUri(hascode + file.getOriginalFilename());
+                fileStorageService.save(hascode, file);
+            }
             service.save(joia);
-            fileStorageService.save(file);
             redirectAttributes.addAttribute("mensagem", "Cadastro realizado com sucesso");
-            return "redirect:/admin";
-
+            String message = previousPage.equals("cadastro") ? "Cadastrado" : "Editado";
+            return "redirect:/admin?message=" + message;
         }
 
     }
@@ -75,7 +88,58 @@ public class JoiaController{
     public String deletar(@PathVariable(name = "id") Long id, RedirectAttributes redirectAttributes){
         service.deletar(id);
         redirectAttributes.addAttribute("mensagem", "Produto excluido com sucesso!");
-        return "redirect:/admin";
+        return "redirect:/admin?message=Deletado";
+    }
+
+    @RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
+    public String getJoias(Model model, HttpServletResponse response){
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy-HH:mm:ss:SSS");
+        Date date = new Date();
+        Cookie cookie =  new Cookie ("visita", dateFormat.format(date));
+        cookie.setMaxAge(60*60*24); //expira em 24 horas
+        response.addCookie(cookie); //adicionando o cookie a resposta
+
+        var listJoias = service.listAll();
+        model.addAttribute("listJoiaClient", listJoias);
+        return "index";
+    }
+
+    @RequestMapping("/adicionarCarrinho/{id}")
+    public String getCarrinho(@PathVariable(name = "id") Long id, HttpServletRequest request){
+        System.out.println(service.findById(id));
+
+        HttpSession session = request.getSession();
+
+        if(session.getAttribute("carrinho")==null){
+            session.setAttribute("carrinho", new ArrayList<Joia>());
+        }
+        ArrayList<Joia> productsCar = (ArrayList<Joia>) session.getAttribute("carrinho");
+
+        productsCar.add(service.findById(id));
+        System.out.println("");
+        return "redirect:/";
+
+    }
+    @RequestMapping("/verCarrinho")
+    public String getCarrinho(Model model, HttpServletRequest request){
+        System.out.println(service.listAll());
+        HttpSession session = request.getSession();
+        if(session.getAttribute("carrinho")!=null){
+            ArrayList<Joia> arrayProduct = (ArrayList<Joia>) session.getAttribute("carrinho");
+            model.addAttribute("listCar",arrayProduct);
+            System.out.println(arrayProduct);
+            return "carrinho";
+
+        }
+        return "redirect:/?message=Não existe produtos no carrinho";
+
+    }
+
+    @RequestMapping("/finalizarCompra")
+    public  String finalizarCompra(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/";
     }
 
 }

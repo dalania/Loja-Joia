@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface JoiaRepository extends JpaRepository<Joia, Long> {
    List<Joia> findAllByCategory(String category);
-   List<Joia> findAllByDeletedIsNotNull();
-    List<Joia> findAllByDeletedIsNull();
+   List<Joia> findAllByDeletedIsNull();
 
 }
