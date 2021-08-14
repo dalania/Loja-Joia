@@ -81,3 +81,36 @@ button{
 button:hover{
     filter: brightness(0.8);
 }
+
+
+footer{
+    border-top: 1px solid rgba(228, 180, 170, 0.25);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 200px;
+
+}
+footer section{
+
+    padding: 20px;
+}
+footer h2,span,i{
+
+    color: var(--pink);
+}
+
+footer i{
+    font-size: 1.2rem;
+    margin-top: 10px;
+    letter-spacing: 10px;
+}
+
+.atendimento{
+    display: flex;
+    flex-direction: column;
+}
+
+.atendimento i{
+    letter-spacing: 2px;
+    font-size: 1rem;
+}
