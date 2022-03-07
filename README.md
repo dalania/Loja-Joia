@@ -16,7 +16,7 @@ Este projeto teve como objetivo criar uma aplicação back-end simples(CRUD) par
 
 
 ##  Autores
-* [Dalania Silva](https://github.com/linkParaPerfil) - *Desenvolvedora Frontend da aplicação*  
+* [Dalania Silva](https://github.com/linkParaPerfil) - *Desenvolvedora Front-end e Back-end da aplicação*  
 
 
 ---
