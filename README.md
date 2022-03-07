@@ -1,8 +1,3 @@
-<h1 align="center">
-    <img alt="Page initial" src="https://res.cloudinary.com/dwufco8zm/image/upload/v1625623695/home_hftgyb.png" />
-    <br>
-    
-</h1>
 
 ## Sobre o projeto
 
