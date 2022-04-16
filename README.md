@@ -1,7 +1,7 @@
 
 ## Sobre o projeto
 
-Este projeto teve como objetivo criar uma aplicação back-end simples(CRUD) para a disciplina do programação web utilizando Spring MVC.
+Este projeto teve como objetivo criar uma aplicação back-end simples(CRUD) para a disciplina de programação web utilizando Spring e postgreSQL no Back-End e Thymeleaf no Front-End.
 
 ## Tecnologias
 
